@@ -493,6 +493,57 @@
     }
   }
 
+
+        /* =============================
+   HAMBURGER MENU
+============================= */
+
+.hamburger{
+    display:none;
+    font-size:24px;
+    cursor:pointer;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+    position:fixed;
+    top:90px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:90%;
+    padding:25px;
+
+    border-radius:30px;
+
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.25);
+    border:1px solid rgba(255,255,255,0.4);
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    text-align:center;
+
+    z-index:200;
+
+    opacity:0;
+    pointer-events:none;
+    transition:0.3s;
+}
+
+.mobile-menu a{
+    text-decoration:none;
+    color:#000;
+    font-weight:600;
+}
+
+.mobile-menu.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
   /* ================= MOBILE ================= */
 
   @media(max-width: 900px){
@@ -546,6 +597,13 @@
   }
   @media (max-width: 768px) {
 
+   .nav-links{
+    display:none;
+}
+
+.hamburger{
+    display:block;
+}
 
     .hero {
       flex-direction: column;
@@ -635,6 +693,27 @@
     }
   }
 
+        .mobile-dropdown-title{
+    font-weight:600;
+    cursor:pointer;
+}
+
+.mobile-dropdown-links{
+    display:none;
+    flex-direction:column;
+    margin-top:8px;
+    gap:10px;
+}
+
+.mobile-dropdown-links a{
+    font-size:14px;
+    opacity:0.8;
+}
+
+.mobile-dropdown-links.active{
+    display:flex;
+}
+
 
     </style>
 </head>
@@ -646,6 +725,10 @@
     <div class="logo">
         <img src="https://i.ibb.co/cSXcmScQ/Shake-Gulp-Logo.png">
         SHAKE & GULP
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        ☰
     </div>
 
     <div class="nav-links">
@@ -689,6 +772,57 @@
         <a href="https://vatsalvarma.github.io/SHAKE-GULP/#">Contact</a>
 
     </div>
+
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="https://vatsalvarma.github.io/SHAKE-GULP/" onclick="toggleMenu()">Home</a>
+
+    <!-- TRADITIONAL DROPDOWN -->
+    <div class="mobile-dropdown">
+        <div class="mobile-dropdown-title" onclick="toggleMobileDropdown('traditionalList')">
+            Traditional Drinks ⮋
+        </div>
+
+        <div class="mobile-dropdown-links" id="traditionalList">
+
+            <a href="https://vatsalvarma.github.io/Jeerabtmlk-prbxx/">Jeera Buttermilk</a>
+            <a href="https://vatsalvarma.github.io/Masala-btmlk-prbxx/">Masala Buttermilk</a>
+            <a href="https://vatsalvarma.github.io/Dates-prbxx/">Date Buttermilk</a>
+            <a href="https://vatsalvarma.github.io/ragibrml-prbxxx/">Ragi Buttermilk</a>
+            <a href="https://vatsalvarma.github.io/Sabjalass-prbxs/">Sabja Lassi</a>
+            <a href="https://vatsalvarma.github.io/Sweetbtmlk-prbxx/">Buttermilk</a>
+            <a href="https://vatsalvarma.github.io/Nmpsabja/">Nimbu Sabja</a>
+            <a href="https://vatsalvarma.github.io/Nimpud-prbxx/">Nimbu Pudina</a>
+
+        </div>
+    </div>
+
+
+    <!-- WELLNESS DROPDOWN -->
+    <div class="mobile-dropdown">
+
+        <div class="mobile-dropdown-title" onclick="toggleMobileDropdown('wellnessList')">
+            Wellness Drinks ⮋
+        </div>
+
+        <div class="mobile-dropdown-links" id="wellnessList">
+
+            <a href="https://vatsalvarma.github.io/Ginger-prbxx/">Ginger Shot</a>
+            <a href="https://vatsalvarma.github.io/GingTer-prbxx/">Ginger Turmeric</a>
+            <a href="https://vatsalvarma.github.io/Amla-prbrxx/">Amla Shot</a>
+            <a href="https://vatsalvarma.github.io/Neem-prbxx/">Neem Shot</a>
+            <a href="https://vatsalvarma.github.io/Moringa-prbxx/">Moringa Shot</a>
+            <a href="https://vatsalvarma.github.io/wheatgrass-prbxxx/">Wheatgrass Shot</a>
+            <a href="https://vatsalvarma.github.io/Barley-prbxx/">Barley Drink</a>
+
+        </div>
+
+    </div>
+
+    <a href="https://vatsalvarma.github.io/SHAKE-GULP/#read" onclick="toggleMenu()">Read</a>
+    <a href="https://vatsalvarma.github.io/SHAKE-GULP/#" onclick="openContact();toggleMenu()">Contact</a>
 
 </div>
 
@@ -868,6 +1002,26 @@
         © Shake & Gulp — Shake Well. Gulp Fresh.
     </p>
 </footer>
+
+<script>
+
+    function toggleMenu(){
+
+        const menu = document.getElementById("mobileMenu");
+
+        menu.classList.toggle("active");
+
+    }
+
+    function toggleMobileDropdown(id){
+
+    const menu = document.getElementById(id);
+
+    menu.classList.toggle("active");
+
+}
+
+</script>
 
 </body>
 </html>
